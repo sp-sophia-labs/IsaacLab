@@ -1,4 +1,4 @@
-list of env related to franka robot : https://isaac-sim.github.io/IsaacLab/source/features/environments.html
+### List of env with franka agent : 
 Isaac-Franka-Cabinet-Direct-v0
 Isaac-Open-Drawer-Franka-v0
 Isaac-Open-Drawer-Franka-Play-v0
@@ -12,24 +12,19 @@ Isaac-Reach-Franka-v0
 Isaac-Reach-Franka-Play-v0
 Isaac-Reach-Franka-IK-Abs-v0
 Isaac-Reach-Franka-IK-Rel-v0
+Check : https://isaac-sim.github.io/IsaacLab/source/features/environments.html
+Test env with : ./isaaclab.sh -p source/standalone/environments/zero_agent.py OR random_agent.py --task Isaac-Cartpole-v0 --num_envs 32
 
-To test env : 
-./isaaclab.sh -p source/standalone/environments/zero_agent.py OR random_agent.py --task Isaac-Cartpole-v0 --num_envs 32
-
-RL : 
-
-./isaaclab.sh -p source/standalone/workflows/sb3/train.py --task Isaac-Cartpole-v0 --headless --device cpu
-./isaaclab.sh -p source/standalone/workflows/sb3/play.py --task Isaac-Cartpole-v0 --num_envs 32 --checkpoint /PATH/TO/model.zip
-
-./isaaclab.sh -p source/standalone/workflows/skrl/train.py --task Isaac-Reach-Franka-v0 --headless
-./isaaclab.sh -p source/standalone/workflows/skrl/play.py --task Isaac-Reach-Franka-v0 --num_envs 32 --checkpoint /PATH/TO/model.pt
-
-./isaaclab.sh -p source/standalone/workflows/rl_games/train.py --task Isaac-Ant-v0 --headless
-./isaaclab.sh -p source/standalone/workflows/rl_games/play.py --task Isaac-Ant-v0 --num_envs 32 --checkpoint /PATH/TO/model.pth
-
-./isaaclab.sh -p source/standalone/workflows/rsl_rl/train.py --task Isaac-Reach-Franka-v0 --headless
-./isaaclab.sh -p source/standalone/workflows/rsl_rl/play.py --task Isaac-Reach-Franka-v0 --num_envs 32 --load_run run_folder_name --checkpoint model.pt
+### Reinforcement learning : 
+./isaaclab.sh -p source/standalone/workflows/ RL library /train.py OR play.py to test your model --task X --headless (visualize sim) 
 
 
+### Franka Grasp Task
+Similar setup we want is Isaac-Lift-Cube-Franka-v0 : Pick a cube and bring it to a sampled target position with the Franka robot 
+check https://github.com/isaac-sim/IsaacLab/blob/main/source/extensions/omni.isaac.lab_tasks/omni/isaac/lab_tasks/manager_based/manipulation/lift/config/franka/joint_pos_env_cfg.py
 
-./isaaclab.sh -p source/standalone/workflows/RL_Library/train.py --task X --headless
+- definition of state, action, reward
+- change manipulated object / dynamic size
+- change grasp -> check env and agent/sensors definitions 
+
+
