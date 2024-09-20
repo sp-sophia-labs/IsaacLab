@@ -1,0 +1,35 @@
+list of env related to franka robot : https://isaac-sim.github.io/IsaacLab/source/features/environments.html
+Isaac-Franka-Cabinet-Direct-v0
+Isaac-Open-Drawer-Franka-v0
+Isaac-Open-Drawer-Franka-Play-v0
+Isaac-Open-Drawer-Franka-IK-Abs-v0
+Isaac-Open-Drawer-Franka-IK-Rel-v0
+Isaac-Lift-Cube-Franka-v0
+Isaac-Lift-Cube-Franka-Play-v0
+Isaac-Lift-Cube-Franka-IK-Abs-v0
+Isaac-Lift-Cube-Franka-IK-Rel-v0
+Isaac-Reach-Franka-v0
+Isaac-Reach-Franka-Play-v0
+Isaac-Reach-Franka-IK-Abs-v0
+Isaac-Reach-Franka-IK-Rel-v0
+
+To test env : 
+./isaaclab.sh -p source/standalone/environments/zero_agent.py OR random_agent.py --task Isaac-Cartpole-v0 --num_envs 32
+
+RL : 
+
+./isaaclab.sh -p source/standalone/workflows/sb3/train.py --task Isaac-Cartpole-v0 --headless --device cpu
+./isaaclab.sh -p source/standalone/workflows/sb3/play.py --task Isaac-Cartpole-v0 --num_envs 32 --checkpoint /PATH/TO/model.zip
+
+./isaaclab.sh -p source/standalone/workflows/skrl/train.py --task Isaac-Reach-Franka-v0 --headless
+./isaaclab.sh -p source/standalone/workflows/skrl/play.py --task Isaac-Reach-Franka-v0 --num_envs 32 --checkpoint /PATH/TO/model.pt
+
+./isaaclab.sh -p source/standalone/workflows/rl_games/train.py --task Isaac-Ant-v0 --headless
+./isaaclab.sh -p source/standalone/workflows/rl_games/play.py --task Isaac-Ant-v0 --num_envs 32 --checkpoint /PATH/TO/model.pth
+
+./isaaclab.sh -p source/standalone/workflows/rsl_rl/train.py --task Isaac-Reach-Franka-v0 --headless
+./isaaclab.sh -p source/standalone/workflows/rsl_rl/play.py --task Isaac-Reach-Franka-v0 --num_envs 32 --load_run run_folder_name --checkpoint model.pt
+
+
+
+./isaaclab.sh -p source/standalone/workflows/RL_Library/train.py --task X --headless
